@@ -12,8 +12,7 @@
   text-align: center;
 }*/
 
-
-.topdiv{
+.topdiv {
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -21,14 +20,10 @@
   padding-top: 10px;
 }
 
-
-#panel-heading{
+#panel-heading {
   background-color: #f14668;
   color: #f14668;
-
 }
-
-
 
 /* 
 
@@ -61,7 +56,6 @@
 }
  */
 
-
 /* Logo (Top Left) */
 #springLogo {
   color: #ffffff;
@@ -76,8 +70,4 @@
 
 #navBarSearch {
   width: 7rem;
-}
-
-.container{
-  
 }
