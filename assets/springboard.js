@@ -976,44 +976,28 @@ $(document).ready(function () {
   var cuisineSelected = "";
   var cuisineID;
   let searchInput = " ";
+  var cityInfo = " ";
 
-  let queryURL =
-    "https://developers.zomato.com/api/v2.1/search?entity_id=278&entity_type=city&start=0&count=100&cuisines=1%2C151%2C3%2C193&sort=rating&order=desc";
   const APIKey = "cd932dfc82bc08b58c79cefff1fc925a";
   const APIKey2 = "1092a507c481907491fcd43ea457fbd9";
 
-  //   $.ajax({
-  //     dataType: "json",
-  //     url: queryURL,
-  //     method: "GET",
-  //     crossDomain: true,
-  //     async: true,
-  //     headers: {
-  //       "user-key": APIKey
-  //     }
-  //   }).then(function (data) {
-  //     console.log(data)
-  //   });
-
-  //function to take city name input and populate city name & city-based restaurant and event recommendations
+  //function to take city name input and populate city name & city-based restaurant and event recommendations 
 
   $(".search-button").on("click", function currentCity() {
     event.preventDefault();
     console.log(event);
-    searchInput =
-      event.target.parentElement.parentElement.children[0].children[0].value;
     console.log(searchInput);
+    searchInput = event.target.parentElement.parentElement.children[0].children[0].value;
     // if ($(".search-input")[0].value === '') {
-    /*  searchInput = (".search-input")[1].value; event.target.parentElement.parentElement.children[0].children[0].value;
+    /*  searchInput = $(".search-input")[1].value; event.target.parentElement.parentElement.children[0].children[0].value;
    } else {
-     searchInput = (".search-input").val(); event.target.parentElement.parentElement.children[0].children[0].value;
+     searchInput = $(".search-input").val(); event.target.parentElement.parentElement.children[0].children[0].value;
    } */
     //we also need to check differences
     getEvents(page);
+    getWeather(weatherCity);
 
-    let citiesURL =
-      "https://developers.zomato.com/api/v2.1/cities?q=" + searchInput;
-    console.log(citiesURL);
+    let citiesURL = "https://developers.zomato.com/api/v2.1/cities?q=" + searchInput;
 
     // let corsUrl = 'https://cors-anywhere.herokuapp.com/' + citiesURL
 
@@ -1028,6 +1012,28 @@ $(document).ready(function () {
         "user-key": APIKey,
         "x-requested-with": "xhr",
       },
+    }).then(function (data) {
+
+      console.log(data)
+
+      let cityID = data.location_suggestions[0].id;
+      let cityName = data.location_suggestions[0].name;
+      console.log("city ID from API? ", cityID);
+      $("#cityTitle").text("Welcome to " + cityName);
+      //   console.log("is city name working?", cityName)
+
+        cityInfo = {
+            name: cityName,
+            cityId: cityID
+      }
+      
+      let strCityInfo = JSON.stringify(cityInfo);
+      localStorage.setItem('cityInfo', strCityInfo)
+
+      restaurantRecs(cityID);
+      getEvents(page);
+    }).catch(function (err) {
+      console.log("ERR FOR AJAX CALL", err)
     })
       .then(function (data) {
         console.log(data);
@@ -1072,6 +1078,7 @@ $(document).ready(function () {
       });
   });
 
+  //RESTAURANT PAGE
   //function to populate cuisine dropdown
   for (let i = 0; i < cuisineOptions.cuisines.length; i++) {
     console.log("looping?");
@@ -1080,6 +1087,17 @@ $(document).ready(function () {
     dropdownItem.text(cuisineName);
     $(".dropdown-content").append(dropdownItem);
     // console.log("appending cuisines?")
+  }
+
+//   let parseCityInfo = JSON.parse(localStorage.getItem('cityInfo'))
+//   restaurantRecs(parseCityInfo.cityId)
+
+  if (window.location.href.split("/").slice(-1)[0] === "restaurants.html") {
+    var parseCityInfo = JSON.parse(localStorage.getItem('cityInfo'))
+    restaurantRecs(parseCityInfo.cityId)
+
+    $("#cityTitle").text("Welcome to " + parseCityInfo.name);
+    console.log("currently on restaurants page");
   }
 
   // on click funciton to add is-active class to dropdown to show cuisine options
@@ -1094,8 +1112,8 @@ $(document).ready(function () {
     $(".dropdown").removeClass("is-active");
     $(".box").empty();
 
-    let parseCityInfo = JSON.parse(localStorage.getItem("cityInfo"));
-    restaurantRecs(parseCityInfo.cityId);
+    var parseCityInfo = JSON.parse(localStorage.getItem('cityInfo'))
+    restaurantRecs(parseCityInfo.cityId)
 
     let parseCityInfo = JSON.parse(localStorage.getItem("cityInfo"));
     restaurantRecs(parseCityInfo.cityId);
@@ -1249,12 +1267,14 @@ $(document).ready(function () {
 
   //events function start
   var page = 0;
-  var localStorageCityInfo = JSON.parse(localStorage.getItem("cityInfo"));
+  var localStorageCityInfo = JSON.parse(localStorage.getItem('cityInfo'));
+  console.log(localStorageCityInfo)
   var eventCity = localStorageCityInfo.name;
   // var fileName = location.href.split("/").slice(-1);
   //document.currentURL
   console.log(window.location.href.split("/").slice(-1)[0]);
   if (window.location.href.split("/").slice(-1)[0] === "events.html") {
+    $("#cityTitle").text("Welcome to " + eventCity);
     getEvents(page);
     console.log("currently on events page");
   }
@@ -1407,41 +1427,63 @@ $(document).ready(function () {
   // This time, we do not end up here!
   /*     },
     }); */
-});
 
-// Weather API
 
-function clear(ids) {
-  for (const id of ids) {
-    $("#" + id).empty();
+  // Weather API
+
+
+
+
+  
+  var weatherCity = localStorageCityInfo.name;
+  // var fileName = location.href.split("/").slice(-1); 
+  //document.currentURL
+  console.log(window.location.href.split("/").slice(-1)[0]);
+  if (window.location.href.split("/").slice(-1)[0] === "weather.html") {
+    $("#cityTitle").text("Welcome to " + weatherCity)
+    getWeather(weatherCity);
+    //console.log("currently on events page");
   }
-}
 
-function writeHTML(obj, method) {
-  for (const id in obj) {
-    $("#" + id)[method](obj[id]);
+  function clear(ids) {
+    for (const id of ids) {
+      $("#" + id).empty();
+    }
   }
-}
 
-// Call the API
-$("#weather-button").on("click", function (event) {
-  event.preventDefault();
+  function writeHTML(obj, method) {
+    for (const id in obj) {
+      $("#" + id)[method](obj[id]);
+    }
+  }
+
+
+  // Call the API
+  // $("#sBar").on("click", function () {
+  //console.log("here")
+  //event.preventDefault();
 
   // Declare a variable for any city inserted into the search bar
-  let city = $("#weather-input").val();
+  
+  //let city = $("#weather-input").val();
 
   // Save recent searches to local storage
-  localStorage.setItem("savedCity", JSON.stringify(city));
+  //localStorage.setItem("savedCity", JSON.stringify(city));
 
   // Grab city from local storage
-  let recentCity = $("<p>").text(JSON.parse(localStorage.getItem("savedCity")));
+  //let recentCity = $("<p>").text(JSON.parse(localStorage.getItem("savedCity")));
 
   // Append the most recent searched city into Recent Container in HTML
-  $("#cityOne").append(recentCity);
+  //$("#cityTitle").text(city);
 
   // OpenWeather API URL & API Key
-  let queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=def8b41b43fe3f2e5dff96db885a6932`;
+  
+  
 
+ 
+
+function getWeather(){
+  let queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${weatherCity}&appid=def8b41b43fe3f2e5dff96db885a6932`;
   // AJAX Call for the API
   $.ajax({
     url: queryURL,
@@ -1510,7 +1552,7 @@ $("#weather-button").on("click", function (event) {
     });
 
   // OpenWeather 5-Day Forecast API URL & API Key
-  let queryURL2 = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=def8b41b43fe3f2e5dff96db885a6932`;
+  let queryURL2 = `https://api.openweathermap.org/data/2.5/forecast?q=${weatherCity}&appid=def8b41b43fe3f2e5dff96db885a6932`;
 
   // AJAX call for the API
   $.ajax({
@@ -1699,15 +1741,6 @@ $("#weather-button").on("click", function (event) {
     .catch(function (err) {
       console.log(err);
     });
-});
+}
 
-// MODAL functionality
-$("#explore").click(function () {
-  $("html").removeClass("is-clipped");
-  $(".modal").removeClass("is-active");
-});
-
-$(".modal-close").on("click", function () {
-  $("html").removeClass("is-clipped");
-  $(this).parent().removeClass("is-active");
 });
