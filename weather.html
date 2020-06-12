@@ -92,51 +92,38 @@
         
     </section>
 
+    <section>
+
     <body>
         <form id="search">
-            <label for="weather-input">Find A City!</label>
-    
-            <br />
     
             <input type="text" id="weather-input" />
     
             <input id="weather-button" type="submit" value="search." />
         </form>
     
-        <div id="savedCity" class="container">
-            <div id="savedCityList" class="row">
-                <div id="recents" class="col-md-1">Recents:</div>
-                <div id="cityOne" class="col-md-1"></div>
-                <div id="cityTwo" class="col-md-1"></div>
-                <div id="cityThree" class="col-md-1"></div>
-                <div id="cityFour" class="col-md-1"></div>
-                <div id="cityFive" class="col-md-1"></div>
-                <div id="citySix" class="col-md-1"></div>
-                <div id="citySeven" class="col-md-1"></div>
-                <div id="cityEight" class="col-md-1"></div>
-                <div id="cityNine" class="col-md-1"></div>
-            </div>
-        </div>
-    
         <div id="weather">
-            <div id="city" class="row">
-                <div class="col-md-1"></div>
+            <div id="todayWeather" class="container">
+                <div id="city" class="row">
+                    <div class="col-md-12"></div>
+                </div>
+                <div id="date" class="row">
+                    <div class="col-md-12"></div>
+                </div>
+                <div id="temp" class="row">
+                    <div class="col-md-12"></div>
+                </div>
+                <div id="humid" class="row">
+                    <div class="col-md-12"></div>
+                </div>
+                <div id="wind" class="row">
+                    <div class="col-md-12"></div>
+                </div>
             </div>
-            <div id="date" class="row">
-                <div class="col-md-1"></div>
-            </div>
-            <div id="temp" class="row">
-                <div class="col-md-1"></div>
-            </div>
-            <div id="humid" class="row">
-                <div class="col-md-1"></div>
-            </div>
-            <div id="wind" class="row">
-                <div class="col-md-1"></div>
-            </div>
-            <div id="forecast" class="row">
-                <div class="col-md-1"></div>
-            </div>
+                
+                <div id="forecast" class="row">
+                    <div class="col-md-1"></div>
+                </div>
     
             <div id="weatherCard" class="container">
                 <div id="fiveDayForecast" class="row">
@@ -147,6 +134,7 @@
                         <p id="dayOneHumidity"></p>
                         <p id="dayOneWind"></p>
                         <p id="dayOneWeather"></p>
+                        <!-- <p id="dayOneIcon"></p> -->
                     </div>
                     <div id="dayTwo" class="col-md-2">
                         <h6 id="dayTwoDate"></h6>
@@ -155,6 +143,7 @@
                         <p id="dayTwoHumidity"></p>
                         <p id="dayTwoWind"></p>
                         <p id="dayTwoWeather"></p>
+                       <!-- <p id="dayTwoIcon"></p> -->
                     </div>
                     <div id="dayThree" class="col-md-2">
                         <h6 id="dayThreeDate"></h6>
@@ -163,6 +152,7 @@
                         <p id="dayThreeHumidity"></p>
                         <p id="dayThreeWind"></p>
                         <p id="dayThreeWeather"></p>
+                        <!-- <p id="dayThreeIcon"></p> -->
                     </div>
                     <div id="dayFour" class="col-md-2">
                         <h6 id="dayFourDate"></h6>
@@ -171,6 +161,7 @@
                         <p id="dayFourHumidity"></p>
                         <p id="dayFourWind"></p>
                         <p id="dayFourWeather"></p>
+                        <!--<p id="dayFourIcon"></p> -->
                     </div>
                     <div id="dayFive" class="col-md-2">
                         <h6 id="dayFiveDate"></h6>
@@ -179,10 +170,13 @@
                         <p id="dayFiveHumidity"></p>
                         <p id="dayFiveWind"></p>
                         <p id="dayFiveWeather"></p>
+                        <!--<p id="dayFiveIcon"></p>-->
                     </div>
                 </div>
             </div>
         </div>
+
+    </section>
     
     
 
@@ -190,11 +184,11 @@
 
     
 
-    <!--------- Removed  Footer    -------->
+    <!--------- Removed Footer    -------->
    
     <!--Javascript/JQuery Link-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
-        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js"></script>
     <script src="./assets/springboard.js"></script>
   </body>
 

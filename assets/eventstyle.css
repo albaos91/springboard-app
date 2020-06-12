@@ -25,6 +25,24 @@
   color: #f14668;
 }
 
+.row {
+  justify-content: center;
+}
+
+.pager {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#events-panel {
+  box-shadow: 4px 4px rgb(148, 140, 140);
+}
+
+#attraction-panel {
+  box-shadow: 4px 4px rgb(170, 165, 165);
+}
+
 /* 
 
 .event-container {
