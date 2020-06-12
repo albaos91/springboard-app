@@ -6,7 +6,7 @@
 .container {
   display: flex;
   justify-content: space-around;
-  padding-top: 10px;
+  padding-top: 70px;
 }
 
 .city {
@@ -40,4 +40,14 @@
 
 #navBarSearch {
   width: 7rem;
+}
+
+#modal-search {
+  height: 50%;
+  display: flex;
+  justify-content: center;
+}
+
+#cityTitle {
+  font-size: 60px;
 }

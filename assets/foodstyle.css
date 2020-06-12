@@ -81,3 +81,8 @@
 #navBarSearch {
   width: 7rem;
 }
+
+.dropdown-content {
+  overflow: scroll;
+  max-height: 300px;
+}
