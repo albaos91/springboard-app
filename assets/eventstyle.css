@@ -1,18 +1,22 @@
+body {
+  background-image: url("event2.jpg");
+  background-size: cover;
+}
+
 .section {
   display: inline;
   align-content: center;
 }
 
-/*.title {
+.title {
+  color: white;
   text-align: center;
-  margin-top: -40px;
 }
 
 .city {
   text-align: center;
-}*/
-
-.topdiv {
+}
+*/ .topdiv {
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -41,38 +45,8 @@
 
 #attraction-panel {
   box-shadow: 4px 4px rgb(170, 165, 165);
+  color: white;
 }
-
-/* 
-
-.event-container {
-  display: flex;
-  align-self: flex-end;
-  flex-direction: row;
-  align-items: flex-start;
-  margin-left: 120px;
-}
-
-.column {
-  margin: 0px;
-  flex-wrap: wrap;
-}
-
-.card {
-  display: flex;
-  width: 225px;
-  height: 200px;
-  text-align: center;
-  border-style: solid;
-  align-content: flex-end;
-  flex-wrap: wrap;
-}
-
-.card-content .title {
-  align-self: center;
-  font-size: medium;
-}
- */
 
 /* Logo (Top Left) */
 #springLogo {

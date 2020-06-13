@@ -1,50 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Springboard</title>
-        
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
-        
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Springboard</title>
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css">
+    <script src="https://kit.fontawesome.com/db5e26bbb4.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
         <link rel="stylesheet" href="./assets/style.css">
-    </head>
-    <body>
+</head>
 
-        <!--the rest of the body will have to be rolled into a div so we can set its class to display none when the model is active--> 
-        <div class="modal">
-            <div class="modal-background"></div>
-            <div class="modal-content" id="modal-search">
-                <h1 class="title is-1" id="homeTitle">What City Are You Exploring?</h1>
-                <!-----Search Bar------>
-                <div class="block">
-                    <div class="field has-addons">
-                            <p class="control has-icons-left" id="homeBar">
-                                <input class="input is-rounded" type="input" placeholder="Pick a City...">
-                                <span class="icon is-small is-left">
-                                    <i class="fas fa-city"></i>
-                                </span>
-                            </p>
-                            <p class="control" id="homeBarBtn">
-                                <button type="submit" class="button is-info is-danger is-rounded" id="explore">Explore</button>
-                            </p>
-                    </div>
-                </div>
-                <!-- Any other Bulma elements you want -->
-            </div>
-            <!-- Any other Bulma elements you want -->
-        </div>
-        <button class="modal-close is-large" aria-label="close"></button>
-    </div>
-
-
-
-
-
-
+<body>
 
     <!--Navigation Bar-->
     <div class="block" id="navbarBlock">
@@ -124,7 +96,7 @@
         <!--JQuery will manipulate the DOM to display the inputted city from the search bar-->
         <h1 class="title is-3" id="cityTitle"></h1>
 
-        <!-- JQuery will manipulate the DOM to display these cards after the city is inputted by the user-->
+        <!-- Homepage cards after the city is inputted by the user-->
 
         <div class="container" id="navCardContainer">
             <div class="restaurant_container" id="optionOne">

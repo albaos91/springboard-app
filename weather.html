@@ -16,11 +16,11 @@
       src="https://kit.fontawesome.com/db5e26bbb4.js"
       crossorigin="anonymous"
     ></script>
-    <link rel="stylesheet" href="./assets/weatherstyle.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
     
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+    <link rel="stylesheet" href="./assets/weatherstyle.css" />
   </head>
   <body>
 
@@ -43,13 +43,13 @@
                 <div class="navbar-end">
                     <div class="field has-addons">
                         <p class="control has-icons-left" id="navBarSearch">
-                            <input class="input is-small is-rounded" id="weather-input" type="text" placeholder="Pick a City...">
+                            <input class="input search-input is-small is-rounded" id="weather-input" type="text" placeholder="Pick a City...">
                             <span class="icon is-small is-left">
                                 <i class="fas fa-city"></i>
                             </span>
                         </p>
                         <p class="control">
-                            <a href="" class="button is-small is-rounded" id="sBar">Explore</a>
+                            <a href="" class="button search-button is-small is-rounded" id="sBar">Explore</a>
                         </p>
                     </div>
                     <a class="navbar-item" href="index.html" id="homeBtn">
@@ -95,12 +95,7 @@
     <section>
 
     <body>
-        <form id="search">
-    
-            <input type="text" id="weather-input" />
-    
-            <input id="weather-button" type="submit" value="search." />
-        </form>
+        
     
         <div id="weather">
             <div id="todayWeather" class="container">
@@ -178,17 +173,14 @@
 
     </section>
     
-    
-
-    
-
-    
-
-    <!--------- Removed Footer    -------->
    
     <!--Javascript/JQuery Link-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js" integrity="sha256-5oApc/wMda1ntIEK4qoWJ4YItnV4fBHMwywunj8gPqc=" crossorigin="anonymous"></script>
+    <script src="https://bulma.io/vendor/clipboard-1.7.1.min.js"></script>
+    <script src="https://bulma.io/vendor/js.cookie-2.1.4.min.js"></script>
+    <script src="https://bulma.io/vendor/native.js"></script>
+    
     <script src="./assets/springboard.js"></script>
   </body>
 
