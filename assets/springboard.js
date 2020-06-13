@@ -859,8 +859,8 @@ $(document).ready(function () {
     console.log(citiesURL);
 
     console.log("this is what we typed", searchInput);
-    getEvents(page);
-    getWeather(weatherCity);
+    // getEvents(page);
+    // getWeather(weatherCity);
 
     $.ajax({
       dataType: "json",
@@ -879,6 +879,7 @@ $(document).ready(function () {
       console.log("city ID from API? ", cityID);
       $("#cityTitle").text("Welcome to " + cityName);
 
+
       let cityInfo = {
         name: cityName,
         cityId: cityID
@@ -887,6 +888,8 @@ $(document).ready(function () {
       let strCityInfo = JSON.stringify(cityInfo);
       localStorage.setItem('cityInfo', strCityInfo)
 
+      getEvents(page);
+      getWeather(weatherCity);
       restaurantRecs(cityID);
      
     }).catch(function (err) {
@@ -1236,7 +1239,7 @@ $(document).ready(function () {
 
 function getWeather(){
   localStorageCityInfo = JSON.parse(localStorage.getItem('cityInfo'));
-  weatherCity = localStorageCityInfo.name;
+    weatherCity = localStorageCityInfo.name;
   pig = weatherCity;
   pigArray = pig.split(",");
 
